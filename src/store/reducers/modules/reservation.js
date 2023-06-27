@@ -1,11 +1,4 @@
-export const reservationActionKind = {
-    UPDATE_HOLDER: 'UPDATE_HOLDER',
-    UPDATE_NUMBER: 'UPDATE_NUMBER',
-    UPDATE_EMAIL: 'UPDATE_EMAIL',
-    UPDATE_TYPE: 'UPDATE_TYPE',
-    UPDATE_ADDRESS: 'UPDATE_ADDRESS',
-    UPDATE_ITEM: 'UPDATE_ITEM',
-};
+import { UPDATE_CURRENT_STATE, reservationActionKind } from '../../../utils/states';
 
 export const reservationReducer = (state, { action, payload }) => {
     switch (action) {
@@ -18,6 +11,26 @@ export const reservationReducer = (state, { action, payload }) => {
             return {
                 ...state,
                 number: payload,
+            };
+        case reservationActionKind.UPDATE_EMAIL:
+            return {
+                ...state,
+                email: payload,
+            };
+        case reservationActionKind.UPDATE_TYPE:
+            return {
+                ...state,
+                type: payload,
+            };
+        case reservationActionKind.UPDATE_ADDRESS:
+            return {
+                ...state,
+                address: payload,
+            };
+        case UPDATE_CURRENT_STATE:
+            return {
+                ...state,
+                current: payload,
             };
     }
 };

@@ -4,7 +4,6 @@ import { UPDATE_CURRENT_STATE } from '../../utils/states';
 
 const GenericInput = ({ requiredInput, action, nextStep }) => {
     const { dispatch } = useStore();
-    console.log('entre');
 
     useText(({ text }) => {
         dispatch({
@@ -17,7 +16,11 @@ const GenericInput = ({ requiredInput, action, nextStep }) => {
         });
     });
 
-    return <Text>Escriba su {requiredInput}</Text>;
+    return (
+        <>
+            <Text>Escriba su {requiredInput}</Text>
+        </>
+    );
 };
 
 export default GenericInput;

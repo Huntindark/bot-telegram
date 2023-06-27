@@ -10,13 +10,13 @@ const Welcomer = () => {
     useEffect(() => {
         return dispatch({
             action: UPDATE_CURRENT_STATE,
-            payload: stateDesc.ASK_PHONE_MESSAGE,
+            payload: stateDesc.ASK_NAME_MESSAGE,
         });
     });
     return (
         <>
-            <Text isNewMessageEveryRender>Bienvenido {chat.firstName}!</Text>
-            <Text isNewMessageEveryRender>Por favor siga los pasos a continuacion</Text>
+            <Text>Bienvenido {chat.firstName}!</Text>
+            <Text>Por favor siga los pasos a continuacion</Text>
         </>
     );
 };

@@ -10,3 +10,12 @@ export const stateDesc = {
 };
 
 export const UPDATE_CURRENT_STATE = 'UPDATE_CURRENT_STATE';
+
+export const reservationActionKind = {
+    UPDATE_HOLDER: 'UPDATE_HOLDER',
+    UPDATE_NUMBER: 'UPDATE_NUMBER',
+    UPDATE_EMAIL: 'UPDATE_EMAIL',
+    UPDATE_TYPE: 'UPDATE_TYPE',
+    UPDATE_ADDRESS: 'UPDATE_ADDRESS',
+    UPDATE_ITEM: 'UPDATE_ITEM',
+};
