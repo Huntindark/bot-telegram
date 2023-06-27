@@ -1,10 +1,12 @@
 import Welcomer from '../components/welcomer';
-import GenericInput from '../components/inputs/genericInput';
 import Output from '../components/output';
-import { UPDATE_CURRENT_STATE, stateDesc, reservationActionKind } from '../utils/states';
+import { UPDATE_CURRENT_STATE, stateDesc } from '../utils/states';
 import { useStore } from '../store';
 import { useCommand } from '@urban-bot/core';
 import Capsule from '../components/capsule';
+import NameInput from '../components/inputs/name';
+import NumberInput from '../components/inputs/phone';
+import EmailInput from '../components/inputs/email';
 
 export const View = () => {
     const { state, dispatch } = useStore();
@@ -17,38 +19,10 @@ export const View = () => {
 
     const stateMapper = {
         [stateDesc.GREET]: <Welcomer />,
-        [stateDesc.ASK_NAME_MESSAGE]: (
-            <>
-                <GenericInput
-                    action={reservationActionKind.UPDATE_HOLDER}
-                    requiredInput="Nombre de la reserva"
-                    nextStep={stateDesc.ASK_PHONE_MESSAGE}
-                />
-            </>
-        ),
-        [stateDesc.ASK_PHONE_MESSAGE]: (
-            <>
-                <GenericInput
-                    action={reservationActionKind.UPDATE_NUMBER}
-                    requiredInput="Numero de Telefono"
-                    nextStep={stateDesc.ASK_EMAIL_MESSAGE}
-                />
-            </>
-        ),
-        [stateDesc.ASK_EMAIL_MESSAGE]: (
-            <>
-                <GenericInput
-                    action={reservationActionKind.UPDATE_EMAIL}
-                    requiredInput="Email de contacto"
-                    nextStep={stateDesc.PRINT}
-                />
-            </>
-        ),
-        [stateDesc.PRINT]: (
-            <>
-                <Output />
-            </>
-        ),
+        [stateDesc.ASK_NAME_MESSAGE]: <NameInput />,
+        [stateDesc.ASK_PHONE_MESSAGE]: <NumberInput />,
+        [stateDesc.ASK_EMAIL_MESSAGE]: <EmailInput />,
+        [stateDesc.PRINT]: <Output />,
     };
 
     if (typeof state.current == 'undefined') return;
