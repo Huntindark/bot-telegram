@@ -1,5 +1,5 @@
 import Welcomer from '../components/welcomer';
-import GenericInput from '../components/genericInput';
+import GenericInput from '../components/inputs/genericInput';
 import Output from '../components/output';
 import { UPDATE_CURRENT_STATE, stateDesc, reservationActionKind } from '../utils/states';
 import { useStore } from '../store';
@@ -44,9 +44,13 @@ export const View = () => {
                 />
             </>
         ),
-        [stateDesc.PRINT]: <Output />,
+        [stateDesc.PRINT]: (
+            <>
+                <Output />
+            </>
+        ),
     };
 
     if (typeof state.current == 'undefined') return;
-    return <Capsule component={stateMapper[state.current]} />;
+    return <Capsule isNewMessageEveryRender={false} component={stateMapper[state.current]} />;
 };

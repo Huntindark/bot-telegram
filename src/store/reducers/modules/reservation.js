@@ -5,27 +5,32 @@ export const reservationReducer = (state, { action, payload }) => {
         case reservationActionKind.UPDATE_HOLDER:
             return {
                 ...state,
-                holder: payload,
+                holder: payload.text,
+                current: payload.nextStep,
             };
         case reservationActionKind.UPDATE_NUMBER:
             return {
                 ...state,
-                number: payload,
+                number: payload.text,
+                current: payload.nextStep,
             };
         case reservationActionKind.UPDATE_EMAIL:
             return {
                 ...state,
-                email: payload,
+                email: payload.text,
+                current: payload.nextStep,
             };
         case reservationActionKind.UPDATE_TYPE:
             return {
                 ...state,
-                type: payload,
+                type: payload.text,
+                current: payload.nextStep,
             };
         case reservationActionKind.UPDATE_ADDRESS:
             return {
                 ...state,
-                address: payload,
+                address: payload.text,
+                current: payload.nextStep,
             };
         case UPDATE_CURRENT_STATE:
             return {
