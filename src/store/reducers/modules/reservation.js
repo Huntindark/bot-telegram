@@ -1,4 +1,4 @@
-import { UPDATE_CURRENT_STATE, reservationActionKind } from '../../../utils';
+import { reservationActionKind } from '../../../utils';
 
 export const reservationReducer = (state, { action, payload }) => {
     switch (action) {
@@ -32,7 +32,7 @@ export const reservationReducer = (state, { action, payload }) => {
                 address: payload.text,
                 current: payload.nextStep,
             };
-        case UPDATE_CURRENT_STATE:
+        case reservationActionKind.UPDATE_CURRENT_STATE:
             return {
                 ...state,
                 current: payload,

@@ -1,7 +1,7 @@
 import { Text, useBotContext } from '@urban-bot/core';
 import { useStore } from '../../store';
 import { useEffect } from 'react';
-import { UPDATE_CURRENT_STATE, stateDesc } from '../../utils';
+import { reservationActionKind, step } from '../../utils';
 
 const Welcomer = () => {
     const { dispatch } = useStore();
@@ -9,8 +9,8 @@ const Welcomer = () => {
 
     useEffect(() => {
         return dispatch({
-            action: UPDATE_CURRENT_STATE,
-            payload: stateDesc.ASK_NAME_MESSAGE,
+            action: reservationActionKind.UPDATE_CURRENT_STATE,
+            payload: step.ASK_NAME,
         });
     });
     return (

@@ -1,6 +1,5 @@
 import { Text, useText } from '@urban-bot/core';
 import { useStore } from '../../../store';
-import { UPDATE_CURRENT_STATE } from '../../../utils';
 
 const GenericInput = ({ requiredInput, action, nextStep }) => {
     const { dispatch } = useStore();
@@ -11,8 +10,6 @@ const GenericInput = ({ requiredInput, action, nextStep }) => {
             payload: { text, nextStep },
         });
     });
-
-    console.log(`"requiredInput:", ${requiredInput}, "action:" ${action}, "nextStep:" ${nextStep}`);
 
     return (
         <>

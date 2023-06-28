@@ -1,18 +1,17 @@
 import { Button, ButtonGroup, useText } from '@urban-bot/core';
 import { useStore } from '../../store';
-import { reservationActionKind, stateDesc } from '../../utils';
+import { reservationActionKind, step } from '../../utils';
 
 const TypeButtons = () => {
     const { dispatch } = useStore();
 
     const typeMapper = {
-        retirar: stateDesc.ASK_SEND_DIRECTION,
-        local: stateDesc.ASK_SEND_DIRECTION,
-        delivery: stateDesc.ASK_ADDRESS_MESSAGE,
+        retirar: step.ASK_SEND_DIRECTION,
+        local: step.ASK_SEND_DIRECTION,
+        delivery: step.ASK_ADDRESS,
     };
 
     useText(({ text }) => {
-        console.log(typeMapper[text]);
         dispatch({
             action: reservationActionKind.UPDATE_TYPE,
             payload: { text, nextStep: typeMapper[text] },

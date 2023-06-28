@@ -1,6 +1,6 @@
 import Welcomer from '../components/welcomer';
 import Output from '../components/output';
-import { UPDATE_CURRENT_STATE, stateDesc } from '../utils';
+import { reservationActionKind, step } from '../utils';
 import { useStore } from '../store';
 import { useCommand } from '@urban-bot/core';
 import Capsule from '../components/capsule';
@@ -10,24 +10,31 @@ import EmailInput from '../components/inputs/email';
 import SendLocation from '../components/sendLocation';
 import TypeButtons from '../components/typeButtons';
 import AddressInput from '../components/inputs/address';
+import Catalog from '../components/catalog';
+import { ProductsProvider } from '../store/products';
 
 export const View = () => {
     const { state, dispatch } = useStore();
     useCommand(() => {
         dispatch({
-            action: UPDATE_CURRENT_STATE,
-            payload: stateDesc.GREET,
+            action: reservationActionKind.UPDATE_CURRENT_STATE,
+            payload: step.GREET,
         });
     }, '/reset');
 
     const stateMapper = {
-        [stateDesc.GREET]: <Welcomer />,
-        [stateDesc.ASK_NAME_MESSAGE]: <NameInput />,
-        [stateDesc.ASK_PHONE_MESSAGE]: <NumberInput />,
-        [stateDesc.ASK_EMAIL_MESSAGE]: <EmailInput />,
-        [stateDesc.ASK_TYPE_MESSAGE]: <TypeButtons />,
-        [stateDesc.ASK_ADDRESS_MESSAGE]: <AddressInput />,
-        [stateDesc.PRINT]: <Output />,
+        [step.GREET]: <Welcomer />,
+        [step.ASK_NAME]: <NameInput />,
+        [step.ASK_PHONE]: <NumberInput />,
+        [step.ASK_EMAIL]: <EmailInput />,
+        [step.ASK_TYPE]: <TypeButtons />,
+        [step.ASK_ADDRESS]: <AddressInput />,
+        [step.ASK_PRODUCTS]: (
+            <ProductsProvider>
+                <Catalog />
+            </ProductsProvider>
+        ),
+        [step.PRINT]: <Output />,
     };
 
     if (typeof state.current == 'undefined') return;

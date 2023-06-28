@@ -1,0 +1,52 @@
+[
+    {
+        "id": 0,
+        "name": "Hamburguesa",
+        "images": [
+            "https://www.lanacion.com.ar/lifestyle/es-experto-en-hamburguesas-y-revela-el-error-mas-comun-al-hacerlas-caseras-que-ingredientes-no-debes-nid21092022/",
+            "https://www.secretosdecocina.com/receta/pan/232055-mega-burger-mediterranea/",
+            "https://tn.com.ar/sociedad/2023/05/27/dia-de-la-hamburguesa-por-que-se-celebra-el-28-de-mayo/"
+        ],
+        "price": 1500
+    },
+    {
+        "id": 1,
+        "name": "Papas Fritas",
+        "images": [
+            "https://www.paulinacocina.net/papas-fritas-sin-aceite/11028",
+            "https://www.comedera.com/patatas-fritas-al-horno/",
+            "https://vinomanos.com/2021/08/como-se-hacen-las-papas-fritas-caseras/"
+        ],
+        "price": 600
+    },
+    {
+        "id": 2,
+        "name": "Ensalada",
+        "images": [
+            "https://www.recepedia.com/es-ar/recetas/plato/165292-ensalada-multicolor-ats/",
+            "https://www.comedera.com/receta-ensalada-de-pollo/",
+            "https://www.pequerecetas.com/receta/ensalada-griega/"
+        ],
+        "price": 700
+    },
+    {
+        "id": 3,
+        "name": "Pizza",
+        "images": [
+            "https://www.thepioneerwoman.com/food-cooking/recipes/a36080074/classic-cheese-pizza/",
+            "https://recipes.timesofindia.com/recipes/pizza/rs56933159.cms",
+            "https://www.lavanguardia.com/comer/20210330/6617406/pizza-recetas-trucos-consejos-comida-mas-difundida-mundo-esi.html"
+        ],
+        "price": 1800
+    },
+    {
+        "id": 4,
+        "name": "Coca Cola",
+        "images": [
+            "https://www.laronline.com.ar/productos/gaseosa-coca-cola-1-5l/",
+            "https://www.mcdonalds.com/us/es-us/product/coca-cola-20-oz-bottle.html",
+            "https://www.coca-colacompany.com/"
+        ],
+        "price": 550
+    }
+]

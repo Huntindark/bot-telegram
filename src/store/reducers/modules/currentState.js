@@ -1,10 +1,8 @@
-const UPDATE_CURRENT_STATE = 'UPDATE_CURRENT_STATE';
+import { reservationActionKind } from '../../../utils';
 
 export const currentStateReducer = (state, { action, payload }) => {
-    console.log(action, payload);
     switch (action) {
-        case UPDATE_CURRENT_STATE:
-            console.log(payload);
+        case reservationActionKind.UPDATE_CURRENT_STATE:
             return {
                 ...state,
                 current: payload,

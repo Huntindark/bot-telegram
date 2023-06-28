@@ -1,5 +1,5 @@
 import React from 'react';
-import { reservationActionKind, stateDesc } from '../../../utils';
+import { reservationActionKind, step } from '../../../utils';
 import GenericInput from '../genericInput';
 
 const NameInput = () => {
@@ -9,7 +9,7 @@ const NameInput = () => {
                 isNewMessageEveryRender={false}
                 action={reservationActionKind.UPDATE_HOLDER}
                 requiredInput="Nombre de la reserva"
-                nextStep={stateDesc.ASK_PHONE_MESSAGE}
+                nextStep={step.ASK_PHONE}
             />
         </>
     );

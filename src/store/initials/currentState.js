@@ -1,7 +1,7 @@
-import { stateDesc } from '../../utils';
+import { step } from '../../utils';
 
 const initState = {
-    current: stateDesc.GREET,
+    current: step.GREET,
 };
 
 export default initState;
