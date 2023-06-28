@@ -1,4 +1,4 @@
-import { UPDATE_CURRENT_STATE, reservationActionKind } from '../../../utils/states';
+import { UPDATE_CURRENT_STATE, reservationActionKind } from '../../../utils';
 
 export const reservationReducer = (state, { action, payload }) => {
     switch (action) {

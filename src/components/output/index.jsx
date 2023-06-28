@@ -10,6 +10,8 @@ const Output = () => {
             <Text>{state.holder}</Text>
             <Text>{state.number}</Text>
             <Text>{state.email}</Text>
+            <Text>{state.type}</Text>
+            <Text>{state.address}</Text>
         </>
     );
 };

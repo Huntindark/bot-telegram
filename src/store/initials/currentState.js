@@ -1,4 +1,4 @@
-import { stateDesc } from '../../utils/states';
+import { stateDesc } from '../../utils';
 
 const initState = {
     current: stateDesc.GREET,

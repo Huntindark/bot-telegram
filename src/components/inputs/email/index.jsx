@@ -1,5 +1,5 @@
 import React from 'react';
-import { reservationActionKind, stateDesc } from '../../../utils/states';
+import { reservationActionKind, stateDesc } from '../../../utils';
 import GenericInput from '../genericInput';
 
 const EmailInput = () => {
@@ -9,7 +9,7 @@ const EmailInput = () => {
                 isNewMessageEveryRender={false}
                 action={reservationActionKind.UPDATE_EMAIL}
                 requiredInput="Email de contacto"
-                nextStep={stateDesc.PRINT}
+                nextStep={stateDesc.ASK_TYPE_MESSAGE}
             />
         </>
     );

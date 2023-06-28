@@ -1,7 +1,7 @@
 import { Text, useBotContext } from '@urban-bot/core';
 import { useStore } from '../../store';
 import { useEffect } from 'react';
-import { UPDATE_CURRENT_STATE, stateDesc } from '../../utils/states';
+import { UPDATE_CURRENT_STATE, stateDesc } from '../../utils';
 
 const Welcomer = () => {
     const { dispatch } = useStore();
@@ -16,6 +16,9 @@ const Welcomer = () => {
     return (
         <>
             <Text>Bienvenido {chat.firstName}!</Text>
+            <Text>
+                Recuerda que puedes preguntar por la direccion del local en cualquier momento enviando el mensaje /dire
+            </Text>
             <Text>Por favor siga los pasos a continuacion</Text>
         </>
     );

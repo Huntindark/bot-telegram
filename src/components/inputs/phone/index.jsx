@@ -1,5 +1,5 @@
 import React from 'react';
-import { reservationActionKind, stateDesc } from '../../../utils/states';
+import { reservationActionKind, stateDesc } from '../../../utils';
 import GenericInput from '../genericInput';
 
 const NumberInput = () => {
