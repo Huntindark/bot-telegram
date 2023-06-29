@@ -2,7 +2,7 @@ import Welcomer from '../components/welcomer';
 import Output from '../components/output';
 import { reservationActionKind, step } from '../utils';
 import { useStore } from '../store';
-import { useCommand } from '@urban-bot/core';
+import { useAnyEvent, useCommand } from '@urban-bot/core';
 import Capsule from '../components/capsule';
 import NameInput from '../components/inputs/name';
 import NumberInput from '../components/inputs/phone';
@@ -21,6 +21,10 @@ export const View = () => {
             payload: step.ASK_PRODUCTS,
         });
     }, '/reset');
+
+    useAnyEvent((event) => {
+        console.log(event);
+    });
 
     const stateMapper = {
         [step.GREET]: <Welcomer />,

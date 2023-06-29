@@ -6,8 +6,8 @@ const TypeButtons = () => {
     const { dispatch } = useStore();
 
     const typeMapper = {
-        retirar: step.ASK_SEND_DIRECTION,
-        local: step.ASK_SEND_DIRECTION,
+        retirar: step.ASK_PRODUCTS,
+        local: step.ASK_PRODUCTS,
         delivery: step.ASK_ADDRESS,
     };
 
