@@ -43,9 +43,7 @@
         "id": 4,
         "name": "Coca Cola",
         "images": [
-            "https://www.laronline.com.ar/productos/gaseosa-coca-cola-1-5l/",
-            "https://www.mcdonalds.com/us/es-us/product/coca-cola-20-oz-bottle.html",
-            "https://www.coca-colacompany.com/"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_%28Germany%29.jpg/320px-15-09-26-RalfR-WLC-0098_-_Coca-Cola_glass_bottle_%28Germany%29.jpg"
         ],
         "price": 550
     }

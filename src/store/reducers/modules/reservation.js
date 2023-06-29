@@ -32,6 +32,16 @@ export const reservationReducer = (state, { action, payload }) => {
                 address: payload.text,
                 current: payload.nextStep,
             };
+        case reservationActionKind.ADD_ITEM:
+            return {
+                ...state,
+                items: payload,
+            };
+        case reservationActionKind.REMOVE_ITEM:
+            return {
+                ...state,
+                items: payload,
+            };
         case reservationActionKind.UPDATE_CURRENT_STATE:
             return {
                 ...state,

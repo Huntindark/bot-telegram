@@ -18,7 +18,7 @@ export const View = () => {
     useCommand(() => {
         dispatch({
             action: reservationActionKind.UPDATE_CURRENT_STATE,
-            payload: step.GREET,
+            payload: step.ASK_PRODUCTS,
         });
     }, '/reset');
 
@@ -34,7 +34,11 @@ export const View = () => {
                 <Catalog />
             </ProductsProvider>
         ),
-        [step.PRINT]: <Output />,
+        [step.PRINT]: (
+            <ProductsProvider>
+                <Output />
+            </ProductsProvider>
+        ),
     };
 
     if (typeof state.current == 'undefined') return;

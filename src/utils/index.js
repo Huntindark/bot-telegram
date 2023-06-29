@@ -18,14 +18,25 @@ export const reservationActionKind = {
     UPDATE_ADDRESS: 'UPDATE_ADDRESS',
     UPDATE_ITEM: 'UPDATE_ITEM',
     UPDATE_CURRENT_STATE: 'UPDATE_CURRENT_STATE',
+    ADD_ITEM: 'ADD_ITEM',
+    REMOVE_ITEM: 'REMOVE_ITEM',
 };
 
 export const calculateCircularIndex = (index, arrayLength) => {
     if (index < 0) {
         return arrayLength - 1;
-    } else if (index >= arrayLength) {
+    } else if (index > arrayLength) {
         return 0;
     } else {
         return index;
     }
+};
+
+export const calculateTotal = ({ list, products }) => {
+    let total = 0;
+    Object.keys(list).map((item, _i) => {
+        total += products[item].price * list[item];
+    });
+
+    return total;
 };
