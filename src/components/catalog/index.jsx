@@ -26,7 +26,9 @@ const Catalog = () => {
     };
 
     const clickNextProduct = () => {
+        console.log(productIndex);
         setProductIndex(calculateCircularIndex(productIndex + 1, products.length));
+        console.log(calculateCircularIndex(productIndex + 1, products.length));
         setImageIndex(0);
     };
 
@@ -37,6 +39,16 @@ const Catalog = () => {
     const clickAddProductToList = () => {
         const id = activeProduct.id;
         const value = state.items[id] + 1;
+        dispatch({
+            action: reservationActionKind.ADD_ITEM,
+            payload: { ...state.items, [id]: value },
+        });
+    };
+
+    const clickRemoveProductToList = () => {
+        const id = activeProduct.id;
+        if (state.items[id] <= 0) return;
+        const value = state.items[id] - 1;
         dispatch({
             action: reservationActionKind.ADD_ITEM,
             payload: { ...state.items, [id]: value },
@@ -67,11 +79,14 @@ const Catalog = () => {
                 <ButtonGroup maxColumns={2}>
                     <Button onClick={clickPreviousProduct}>⬅️ anterior</Button>
                     <Button onClick={clickNextProduct}>siguiente ➡️</Button>
-                    {activeProduct.images.length > 1 ? <Button onClick={clickNextImage}>🖼️</Button> : null}
-                    <Button onClick={finish}>Terminar Seleccion</Button>
+                    <Button
+                        onClick={clickRemoveProductToList}
+                    >{`Eliminar 1 de la lista (${state.items[productIndex]})`}</Button>
                     <Button
                         onClick={clickAddProductToList}
                     >{`Agregar a la lista (${state.items[productIndex]})`}</Button>
+                    {activeProduct.images.length > 1 ? <Button onClick={clickNextImage}>🖼️</Button> : null}
+                    <Button onClick={finish}>Terminar Seleccion</Button>
                 </ButtonGroup>
             }
         />

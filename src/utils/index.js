@@ -25,7 +25,7 @@ export const reservationActionKind = {
 export const calculateCircularIndex = (index, arrayLength) => {
     if (index < 0) {
         return arrayLength - 1;
-    } else if (index > arrayLength) {
+    } else if (index >= arrayLength) {
         return 0;
     } else {
         return index;
