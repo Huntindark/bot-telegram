@@ -8,7 +8,7 @@ const SendLocation = () => {
         setLatitude(undefined);
     }, '/dire');
 
-    if (typeof latitude === 'undefined') return;
+    if (latitude === undefined) return;
     return (
         <>
             <Location latitude={latitude} longitude={-57.948153} />

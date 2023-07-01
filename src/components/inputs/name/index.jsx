@@ -7,6 +7,7 @@ const NameInput = () => {
         <>
             <GenericInput
                 isNewMessageEveryRender={false}
+                regex={/.*$/}
                 action={reservationActionKind.UPDATE_HOLDER}
                 requiredInput="Nombre de la reserva"
                 nextStep={step.ASK_PHONE}

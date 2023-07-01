@@ -16,7 +16,7 @@ const TypeButtons = () => {
             action: reservationActionKind.UPDATE_TYPE,
             payload: { text, nextStep: typeMapper[text] },
         });
-    });
+    }, ['local', 'delivery', 'retirar']);
     return (
         <ButtonGroup
             title="Por favor seleccione si comera en el local, es para retirar, o requiere delivery"
