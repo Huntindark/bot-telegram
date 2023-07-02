@@ -1,4 +1,4 @@
-import { Text } from '@urban-bot/core';
+import { Button, ButtonGroup, Text } from '@urban-bot/core';
 import { useStore } from '../../store';
 import React, { useEffect } from 'react';
 import { calculateTotal } from '../../utils';
@@ -16,12 +16,12 @@ const Output = () => {
 
     return (
         <>
-            <Text>Usted escribio</Text>
-            <Text>{state.holder}</Text>
-            <Text>{state.number}</Text>
-            <Text>{state.email}</Text>
-            <Text>{state.type}</Text>
-            <Text>{state.address}</Text>
+            <Text>Usted escribio <br />
+                {state.holder} <br />
+                {state.number} <br />
+                {state.email} <br />
+                {state.type} <br />
+                {state.address}</Text>
             <Text>
                 {Object.keys(state.items).map((item, index) => {
                     return (
@@ -35,6 +35,10 @@ const Output = () => {
                 <br />
                 Costo total: <b>${total}</b>
             </Text>
+            <ButtonGroup>
+                <Button></Button>
+                <Button></Button>
+            </ButtonGroup>
         </>
     );
 };
