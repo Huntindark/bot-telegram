@@ -28,11 +28,11 @@ export const View = () => {
 
     const stateMapper = {
         [step.GREET]: <Welcomer />,
-        [step.ASK_NAME]: <NameInput />,
-        [step.ASK_PHONE]: <NumberInput />,
-        [step.ASK_EMAIL]: <EmailInput />,
+        [step.ASK_NAME]: <NameInput nextStep={step.ASK_PHONE}/>,
+        [step.ASK_PHONE]: <NumberInput nextStep={step.ASK_EMAIL}/>,
+        [step.ASK_EMAIL]: <EmailInput nextStep={step.ASK_TYPE}/>,
         [step.ASK_TYPE]: <TypeButtons />,
-        [step.ASK_ADDRESS]: <AddressInput />,
+        [step.ASK_ADDRESS]: <AddressInput nextStep={step.ASK_PRODUCTS}/>,
         [step.ASK_PRODUCTS]: (
             <ProductsProvider>
                 <Catalog />
