@@ -1,11 +1,11 @@
 import { Button, ButtonGroup, Text } from '@urban-bot/core';
 import { useStore } from '../../store';
 import React, { useEffect } from 'react';
-import { calculateTotal } from '../../utils';
+import { reservationActionKind, calculateTotal, step } from '../../utils';
 import { useProducts } from '../../store/products';
 
 const Output = () => {
-    const { state } = useStore();
+    const { state, dispatch } = useStore();
     const { products, fetchProducts } = useProducts();
 
     useEffect(() => {
@@ -13,6 +13,13 @@ const Output = () => {
     }, [fetchProducts]);
 
     const total = calculateTotal({ list: state.items, products });
+
+    const confirm = () => {
+        dispatch({
+            action: reservationActionKind.UPDATE_CURRENT_STATE,
+            payload: step.CONFIRM,
+        });
+    }
 
     return (
         <>
@@ -36,8 +43,8 @@ const Output = () => {
                 Costo total: <b>${total}</b>
             </Text>
             <ButtonGroup>
-                <Button></Button>
-                <Button></Button>
+                <Button onClick={() => confirm()}>Confirmar</Button>
+                <Button>Editar</Button>
             </ButtonGroup>
         </>
     );
