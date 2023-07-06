@@ -13,6 +13,7 @@ import AddressInput from '../components/inputs/address';
 import Catalog from '../components/catalog';
 import { ProductsProvider } from '../store/products';
 import Confirm from '../components/confirm';
+import SendDelay from '../components/sendDelay';
 
 export const View = () => {
     const { state, dispatch } = useStore();
@@ -29,11 +30,12 @@ export const View = () => {
 
     const stateMapper = {
         [step.GREET]: <Welcomer />,
-        [step.ASK_NAME]: <NameInput nextStep={step.ASK_PHONE}/>,
-        [step.ASK_PHONE]: <NumberInput nextStep={step.ASK_EMAIL}/>,
-        [step.ASK_EMAIL]: <EmailInput nextStep={step.ASK_TYPE}/>,
+        [step.ASK_NAME]: <NameInput nextStep={step.ASK_PHONE} />,
+        [step.ASK_PHONE]: <NumberInput nextStep={step.ASK_EMAIL} />,
+        [step.ASK_EMAIL]: <EmailInput nextStep={step.ASK_TYPE} />,
         [step.ASK_TYPE]: <TypeButtons />,
-        [step.ASK_ADDRESS]: <AddressInput nextStep={step.ASK_PRODUCTS}/>,
+        [step.ASK_ADDRESS]: <AddressInput nextStep={step.SEND_DELAY} />,
+        [step.SEND_DELAY]: <SendDelay />,
         [step.ASK_PRODUCTS]: (
             <ProductsProvider>
                 <Catalog />

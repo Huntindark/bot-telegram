@@ -10,8 +10,8 @@ const TypeButtons = () => {
     );
 
     const typeMapper = {
-        retirar: step.ASK_PRODUCTS,
         local: step.ASK_PRODUCTS,
+        retirar: step.SEND_DELAY,
         delivery: step.ASK_ADDRESS,
     };
     useText(() => {
