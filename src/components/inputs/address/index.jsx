@@ -1,8 +1,8 @@
 import { Text, useAnyEvent } from '@urban-bot/core';
 import { useStore } from '../../../store';
-import { reservationActionKind, step } from '../../../utils';
+import { reservationActionKind } from '../../../utils';
 
-const AddressInput = ({nextStep}) => {
+const AddressInput = ({ nextStep }) => {
     const { dispatch } = useStore();
 
     useAnyEvent((event) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { reservationActionKind, step } from '../../../utils';
+import { reservationActionKind } from '../../../utils';
 import GenericInput from '../genericInput';
 
 const NameInput = ({ nextStep }) => {
@@ -10,7 +10,7 @@ const NameInput = ({ nextStep }) => {
                 regex={/.*$/}
                 action={reservationActionKind.UPDATE_HOLDER}
                 requiredInput="Nombre de la reserva"
-                nextStep={ nextStep }
+                nextStep={nextStep}
             />
         </>
     );

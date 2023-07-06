@@ -1,5 +1,5 @@
 import React from 'react';
-import { reservationActionKind, step } from '../../../utils';
+import { reservationActionKind } from '../../../utils';
 import GenericInput from '../genericInput';
 
 const NumberInput = ({nextStep}) => {
