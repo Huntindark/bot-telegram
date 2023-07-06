@@ -34,7 +34,7 @@ export const View = () => {
         [step.ASK_PHONE]: <NumberInput nextStep={step.ASK_EMAIL} />,
         [step.ASK_EMAIL]: <EmailInput nextStep={step.ASK_TYPE} />,
         [step.ASK_TYPE]: <TypeButtons />,
-        [step.ASK_ADDRESS]: <AddressInput nextStep={step.ASK_PRODUCTS} />,
+        [step.ASK_ADDRESS]: <AddressInput nextStep={step.SEND_DELAY} />,
         [step.SEND_DELAY]: <SendDelay />,
         [step.ASK_PRODUCTS]: (
             <ProductsProvider>
