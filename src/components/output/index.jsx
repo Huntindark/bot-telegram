@@ -1,11 +1,11 @@
-import { Text } from '@urban-bot/core';
+import { Button, ButtonGroup, Text } from '@urban-bot/core';
 import { useStore } from '../../store';
 import React, { useEffect } from 'react';
-import { calculateTotal } from '../../utils';
+import { reservationActionKind, calculateTotal, step } from '../../utils';
 import { useProducts } from '../../store/products';
 
 const Output = () => {
-    const { state } = useStore();
+    const { state, dispatch } = useStore();
     const { products, fetchProducts } = useProducts();
 
     useEffect(() => {
@@ -14,14 +14,21 @@ const Output = () => {
 
     const total = calculateTotal({ list: state.items, products });
 
+    const confirm = () => {
+        dispatch({
+            action: reservationActionKind.UPDATE_CURRENT_STATE,
+            payload: step.CONFIRM,
+        });
+    }
+
     return (
         <>
-            <Text>Usted escribio</Text>
-            <Text>{state.holder}</Text>
-            <Text>{state.number}</Text>
-            <Text>{state.email}</Text>
-            <Text>{state.type}</Text>
-            <Text>{state.address}</Text>
+            <Text>Usted escribio <br />
+                {state.holder} <br />
+                {state.number} <br />
+                {state.email} <br />
+                {state.type} <br />
+                {state.address}</Text>
             <Text>
                 {Object.keys(state.items).map((item, index) => {
                     return (
@@ -35,6 +42,10 @@ const Output = () => {
                 <br />
                 Costo total: <b>${total}</b>
             </Text>
+            <ButtonGroup title="Desea confirmar su pedido?">
+                <Button onClick={() => confirm()}>Confirmar</Button>
+                <Button>Editar</Button>
+            </ButtonGroup>
         </>
     );
 };

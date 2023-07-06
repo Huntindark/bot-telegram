@@ -8,6 +8,8 @@ export const step = {
     ASK_ADDRESS: 'ASK_ADRESS',
     ASK_PRODUCTS: 'ASK_PRODUCTS',
     PRINT: 'PRINT',
+    CONFIRM: 'CONFIRM',
+    EDIT: 'EDIT',
 };
 
 export const reservationActionKind = {

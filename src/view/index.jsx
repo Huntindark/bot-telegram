@@ -12,6 +12,7 @@ import TypeButtons from '../components/typeButtons';
 import AddressInput from '../components/inputs/address';
 import Catalog from '../components/catalog';
 import { ProductsProvider } from '../store/products';
+import Confirm from '../components/confirm';
 
 export const View = () => {
     const { state, dispatch } = useStore();
@@ -28,11 +29,11 @@ export const View = () => {
 
     const stateMapper = {
         [step.GREET]: <Welcomer />,
-        [step.ASK_NAME]: <NameInput />,
-        [step.ASK_PHONE]: <NumberInput />,
-        [step.ASK_EMAIL]: <EmailInput />,
+        [step.ASK_NAME]: <NameInput nextStep={step.ASK_PHONE}/>,
+        [step.ASK_PHONE]: <NumberInput nextStep={step.ASK_EMAIL}/>,
+        [step.ASK_EMAIL]: <EmailInput nextStep={step.ASK_TYPE}/>,
         [step.ASK_TYPE]: <TypeButtons />,
-        [step.ASK_ADDRESS]: <AddressInput />,
+        [step.ASK_ADDRESS]: <AddressInput nextStep={step.ASK_PRODUCTS}/>,
         [step.ASK_PRODUCTS]: (
             <ProductsProvider>
                 <Catalog />
@@ -43,6 +44,7 @@ export const View = () => {
                 <Output />
             </ProductsProvider>
         ),
+        [step.CONFIRM]: <Confirm />,
     };
 
     if (state.current == undefined) return;
