@@ -42,7 +42,7 @@ const Output = () => {
                 <br />
                 Costo total: <b>${total}</b>
             </Text>
-            <ButtonGroup>
+            <ButtonGroup title="Desea confirmar su pedido?">
                 <Button onClick={() => confirm()}>Confirmar</Button>
                 <Button>Editar</Button>
             </ButtonGroup>

@@ -12,6 +12,7 @@ import TypeButtons from '../components/typeButtons';
 import AddressInput from '../components/inputs/address';
 import Catalog from '../components/catalog';
 import { ProductsProvider } from '../store/products';
+import Confirm from '../components/confirm';
 
 export const View = () => {
     const { state, dispatch } = useStore();
@@ -43,6 +44,7 @@ export const View = () => {
                 <Output />
             </ProductsProvider>
         ),
+        [step.CONFIRM]: <Confirm />,
     };
 
     if (state.current == undefined) return;
