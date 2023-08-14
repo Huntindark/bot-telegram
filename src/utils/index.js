@@ -11,6 +11,11 @@ export const step = {
     PRINT: 'PRINT',
     CONFIRM: 'CONFIRM',
     EDIT: 'EDIT',
+    EDIT_NAME: 'EDIT_NAME',
+    EDIT_PHONE: 'EDIT_PHONE',
+    EDIT_EMAIL: 'EDIT_EMAIL',
+    EDIT_TYPE: 'EDIT_TYPE',
+    EDIT_ADDRESS: 'EDIT_ADDRESS',
 };
 
 export const reservationActionKind = {

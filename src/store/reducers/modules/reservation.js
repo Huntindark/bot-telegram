@@ -1,6 +1,7 @@
 import { reservationActionKind } from '../../../utils';
 
 export const reservationReducer = (state, { action, payload }) => {
+    console.log(state);
     switch (action) {
         case reservationActionKind.UPDATE_HOLDER:
             return {

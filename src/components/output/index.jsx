@@ -12,6 +12,10 @@ const Output = () => {
         fetchProducts();
     }, [fetchProducts]);
 
+    if (products.length === 0) {
+        return <Text simulateTyping={600} />;
+    }
+
     const total = calculateTotal({ list: state.items, products });
 
     const confirm = () => {
@@ -19,16 +23,24 @@ const Output = () => {
             action: reservationActionKind.UPDATE_CURRENT_STATE,
             payload: step.CONFIRM,
         });
-    }
+    };
+    const edit = () => {
+        dispatch({
+            action: reservationActionKind.UPDATE_CURRENT_STATE,
+            payload: step.EDIT,
+        });
+    };
 
     return (
         <>
-            <Text>Usted escribio <br />
+            <Text>
+                Usted escribio <br />
                 {state.holder} <br />
                 {state.number} <br />
                 {state.email} <br />
                 {state.type} <br />
-                {state.address}</Text>
+                {state.address}
+            </Text>
             <Text>
                 {Object.keys(state.items).map((item, index) => {
                     return (
@@ -44,7 +56,7 @@ const Output = () => {
             </Text>
             <ButtonGroup title="Desea confirmar su pedido?">
                 <Button onClick={() => confirm()}>Confirmar</Button>
-                <Button>Editar</Button>
+                <Button onClick={() => edit()}>Editar</Button>
             </ButtonGroup>
         </>
     );

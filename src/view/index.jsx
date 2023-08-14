@@ -14,8 +14,9 @@ import Catalog from '../components/catalog';
 import { ProductsProvider } from '../store/products';
 import Confirm from '../components/confirm';
 import SendDelay from '../components/sendDelay';
+import Edit from '../components/edit';
 
-export const View = () => {
+const View = () => {
     const { state, dispatch } = useStore();
     useCommand(() => {
         dispatch({
@@ -47,6 +48,12 @@ export const View = () => {
             </ProductsProvider>
         ),
         [step.CONFIRM]: <Confirm />,
+        [step.EDIT]: <Edit />,
+        [step.EDIT_NAME]: <NameInput nextStep={step.PRINT} />,
+        [step.EDIT_PHONE]: <NumberInput nextStep={step.PRINT} />,
+        [step.EDIT_EMAIL]: <EmailInput nextStep={step.PRINT} />,
+        [step.EDIT_TYPE]: <TypeButtons />,
+        [step.EDIT_ADDRESS]: <AddressInput nextStep={step.PRINT} />,
     };
 
     if (state.current == undefined) return;
@@ -57,3 +64,5 @@ export const View = () => {
         </>
     );
 };
+
+export default View;
