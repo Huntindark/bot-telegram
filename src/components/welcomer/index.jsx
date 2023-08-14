@@ -15,11 +15,13 @@ const Welcomer = () => {
     });
     return (
         <>
-            <Text>Bienvenido {chat.firstName}!</Text>
             <Text>
+                Bienvenido {chat.firstName}!
+                <br /> <br />
                 Recuerda que puedes preguntar por la direccion del local en cualquier momento enviando el mensaje /dire
+                <br /> <br />
+                Por favor siga los pasos a continuacion
             </Text>
-            <Text>Por favor siga los pasos a continuacion</Text>
         </>
     );
 };
