@@ -43,7 +43,7 @@ const Output = () => {
             </Text>
             <Text>
                 {Object.keys(state.items).map((item, index) => {
-                    return (
+                    return state.items[products[item].id] === 0 ? null : (
                         <React.Fragment key={index}>
                             <i>{products[item].name} </i> - <b> {state.items[products[item].id]} </b>
                             <br />

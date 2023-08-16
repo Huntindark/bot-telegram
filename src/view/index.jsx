@@ -2,8 +2,7 @@ import Welcomer from '../components/welcomer';
 import Output from '../components/output';
 import { reservationActionKind, step } from '../utils';
 import { useStore } from '../store';
-import { useAnyEvent, useCommand } from '@urban-bot/core';
-import Capsule from '../components/capsule';
+import { useCommand } from '@urban-bot/core';
 import NameInput from '../components/inputs/name';
 import NumberInput from '../components/inputs/phone';
 import EmailInput from '../components/inputs/email';
@@ -11,23 +10,27 @@ import SendLocation from '../components/sendLocation';
 import TypeButtons from '../components/typeButtons';
 import AddressInput from '../components/inputs/address';
 import Catalog from '../components/catalog';
-import { ProductsProvider } from '../store/products';
 import Confirm from '../components/confirm';
 import SendDelay from '../components/sendDelay';
 import Edit from '../components/edit';
+import { useProducts } from '../store/products';
+import { useEffect } from 'react';
+import ProductCheck from '../components/productCheck';
 
 const View = () => {
     const { state, dispatch } = useStore();
+    const { fetchProducts } = useProducts();
+
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts]);
+
     useCommand(() => {
         dispatch({
             action: reservationActionKind.UPDATE_CURRENT_STATE,
             payload: step.GREET,
         });
     }, '/reset');
-
-    useAnyEvent((event) => {
-        console.log(event);
-    });
 
     const stateMapper = {
         [step.GREET]: <Welcomer />,
@@ -38,14 +41,14 @@ const View = () => {
         [step.ASK_ADDRESS]: <AddressInput nextStep={step.SEND_DELAY} />,
         [step.SEND_DELAY]: <SendDelay />,
         [step.ASK_PRODUCTS]: (
-            <ProductsProvider>
+            <ProductCheck>
                 <Catalog />
-            </ProductsProvider>
+            </ProductCheck>
         ),
         [step.PRINT]: (
-            <ProductsProvider>
+            <ProductCheck>
                 <Output />
-            </ProductsProvider>
+            </ProductCheck>
         ),
         [step.CONFIRM]: <Confirm />,
         [step.EDIT]: <Edit />,
@@ -59,7 +62,7 @@ const View = () => {
     if (state.current == undefined) return;
     return (
         <>
-            <Capsule isNewMessageEveryRender={false} component={stateMapper[state.current]} />
+            {stateMapper[state.current]}
             <SendLocation />
         </>
     );

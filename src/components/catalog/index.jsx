@@ -1,59 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Image, ButtonGroup, Button, Text } from '@urban-bot/core';
-import { calculateCircularIndex, reservationActionKind, step } from '../../utils';
-import { useProducts } from '../../store/products';
+import React from 'react';
+import { Image, ButtonGroup, Button } from '@urban-bot/core';
+import { reservationActionKind, step } from '../../utils';
 import { useStore } from '../../store';
+import useProduct from './hooks';
 
 const Catalog = () => {
-    const { state, dispatch } = useStore();
-    const [productIndex, setProductIndex] = useState(0);
-    const [imageIndex, setImageIndex] = useState(0);
-    const { products, fetchProducts } = useProducts();
+    const { dispatch } = useStore();
 
-    useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts, products, productIndex]);
-
-    if (products.length === 0) {
-        return <Text simulateTyping={600} />;
-    }
-
-    const activeProduct = products[productIndex];
-
-    const clickPreviousProduct = () => {
-        setProductIndex(calculateCircularIndex(productIndex - 1, products.length));
-        setImageIndex(0);
-    };
-
-    const clickNextProduct = () => {
-        console.log(productIndex);
-        setProductIndex(calculateCircularIndex(productIndex + 1, products.length));
-        console.log(calculateCircularIndex(productIndex + 1, products.length));
-        setImageIndex(0);
-    };
-
-    const clickNextImage = () => {
-        setImageIndex(calculateCircularIndex(imageIndex + 1, activeProduct.images.length));
-    };
-
-    const clickAddProductToList = () => {
-        const id = activeProduct.id;
-        const value = state.items[id] + 1;
-        dispatch({
-            action: reservationActionKind.ADD_ITEM,
-            payload: { ...state.items, [id]: value },
-        });
-    };
-
-    const clickRemoveProductToList = () => {
-        const id = activeProduct.id;
-        if (state.items[id] <= 0) return;
-        const value = state.items[id] - 1;
-        dispatch({
-            action: reservationActionKind.ADD_ITEM,
-            payload: { ...state.items, [id]: value },
-        });
-    };
+    const {
+        activeProduct,
+        currentImage,
+        prevProduct,
+        nextProd,
+        nextImage,
+        addToCart,
+        removeFromCart,
+        totalCurrent,
+        title,
+    } = useProduct();
 
     const finish = () => {
         dispatch({
@@ -62,30 +26,20 @@ const Catalog = () => {
         });
     };
 
-    const title = (
-        <>
-            <i>{activeProduct.name}</i>
-            <br />
-            Price: <b>💲{activeProduct.price}</b>
-        </>
-    );
+    console.log(activeProduct);
 
     return (
         <Image
             isNewMessageEveryRender={false}
             title={title}
-            file={activeProduct.images[imageIndex]}
+            file={currentImage}
             buttons={
                 <ButtonGroup maxColumns={2}>
-                    <Button onClick={clickPreviousProduct}>⬅️ anterior</Button>
-                    <Button onClick={clickNextProduct}>siguiente ➡️</Button>
-                    <Button
-                        onClick={clickRemoveProductToList}
-                    >{`Eliminar 1 de la lista (${state.items[productIndex]})`}</Button>
-                    <Button
-                        onClick={clickAddProductToList}
-                    >{`Agregar a la lista (${state.items[productIndex]})`}</Button>
-                    {activeProduct.images.length > 1 ? <Button onClick={clickNextImage}>🖼️</Button> : null}
+                    <Button onClick={prevProduct}>⬅️ anterior</Button>
+                    <Button onClick={nextProd}>siguiente ➡️</Button>
+                    <Button onClick={removeFromCart}>{`Eliminar 1 de la lista (${totalCurrent()})`}</Button>
+                    <Button onClick={addToCart}>{`Agregar a la lista (${totalCurrent()})`}</Button>
+                    {activeProduct.images.length > 1 ? <Button onClick={nextImage}>🖼️</Button> : null}
                     <Button onClick={finish}>Terminar Seleccion</Button>
                 </ButtonGroup>
             }
